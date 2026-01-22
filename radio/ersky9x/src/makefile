@@ -358,7 +358,7 @@ ifdef OBJROOT
 else
 OBJROOT = .
 endif
-OBJDIR = $(OBJROOT)\obj_$(PROJECT)
+OBJDIR = $(OBJROOT)/obj_$(PROJECT)
 
 # List all user C define here, like -D_DEBUG=1
 
