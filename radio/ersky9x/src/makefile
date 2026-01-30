@@ -1361,7 +1361,7 @@ $(OBJDIR):
 ifeq ($(OSLIN), 0)
 	if NOT EXIST $(OBJDIR) mkdir $(OBJDIR)
 else
-	test -d $(OBJDIR) || $(shell mkdir -p $(OBJDIR) )
+	test -d $(OBJDIR) || mkdir -p $(OBJDIR)
 endif
 
 #$(OBJDIR)/%.o : %.cpp
