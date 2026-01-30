@@ -1248,7 +1248,7 @@ XOBJS = $(ASRC:%.s=x9dobj/%.o) $(SRC:%.c=x9dobj/%.o) $(CPPSRC:%.cpp=x9dobj/%.o)
 ROBJS = $(ASRC:%.s=skyRobj/%.o) $(SRC:%.c=skyRob/%.o) $(CPPSRC:%.cpp=skyRobj/%.o)
 
 #ASFLAGS = $(MCFLAGS) -g -gdwarf-2 -Wa,-amhls=$(<:.s=.lst) $(ADEFS)
-CPFLAGS = $(MCFLAGS) $(OPT) -gdwarf-2 -mthumb -fomit-frame-pointer -Wall -Wstrict-prototypes -fverbose-asm $(DEFS)
+CPFLAGS = $(MCFLAGS) $(OPT) -gdwarf-2 -mthumb -fomit-frame-pointer -Wall -Wstrict-prototypes -fverbose-asm -Wno-address-of-packed-member $(DEFS)
 ifeq ($(SMALL), 1)
 LDFLAGS = $(MCFLAGS) -mthumb -nostartfiles -T$(LDSCRIPT) -Wl,-Map=$(FULL_PRJ).map,--cref,--no-warn-mismatch $(LIBDIR) --specs=nano.specs
 else ifeq ($(ARUNI), 1)
@@ -1368,7 +1368,7 @@ endif
 #	$(CC) -c $(CPPFLAGS) -fno-exceptions -I . $(INCDIR) $< -o $@
 $(CPPOBJS) : $(OBJDIR)/%.o : %.cpp
 #	@mkdir -p $(@D)
-	$(CC) -c $(CPPFLAGS) -fno-exceptions -fno-math-errno -I . $(INCDIR) $< -o $@
+	$(CC) -c $(CPPFLAGS) -Wno-register -Wno-address-of-packed-member -fno-exceptions -fno-math-errno -I . $(INCDIR) $< -o $@
 
 #$(OBJDIR)/%.o : %.c
 #	$(CC) -c $(CPFLAGS) -I . $(INCDIR) $< -o $@
